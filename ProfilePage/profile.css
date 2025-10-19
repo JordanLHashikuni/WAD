@@ -6,36 +6,29 @@ body {
     padding: 0;
 }
 
-body::before {
+body::before, body::after {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top right, #e0f7fa, transparent 70%);
     z-index: -1;
 }
 
+body::before {
+    top: 0; left: 0;
+    background: radial-gradient(circle at top right, #e0f7fa, transparent 70%);
+}
+
 body::after {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 0; right: 0;
     background: radial-gradient(circle at bottom left, #f8f9fa, transparent 70%);
-    z-index: -1;
 }
 
 /* Navbar */
 .navbar {
     background-color: #0d6efd;
     color: white;
-    display: flex;
-    justify-content: space-between;
     padding: 12px 20px;
-    align-items: center;
 }
 
 .navbar a {
@@ -48,26 +41,18 @@ body::after {
     color: #ffdd57;
 }
 
-/* Greeting Banner */
-.profile-info {
-    text-align: center;
-    padding: 40px 20px 20px 20px;
+/* Profile Hero */
+.profile-hero {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     background: linear-gradient(135deg, #4cc9f0, #3a0ca3);
     color: white;
-    border-radius: 0 0 20px 20px;
 }
 
-.profile-info h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.profile-info p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-/* Timetable Cards Grid */
+/* Cards Grid */
 .timetable-list {
     display: flex;
     flex-wrap: wrap;
@@ -85,6 +70,8 @@ body::after {
     flex-direction: column;
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: fadeSlideIn 0.5s ease forwards;
+    opacity: 0;
 }
 
 .timetable-card:hover {
@@ -92,7 +79,6 @@ body::after {
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* Card Header */
 .timetable-card h3 {
     background-color: #0d6efd;
     color: white;
@@ -103,9 +89,8 @@ body::after {
     font-weight: 600;
 }
 
-/* Card Buttons */
 .timetable-card button {
-    margin: 5px 0;
+    margin: 5px auto;
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
@@ -125,20 +110,9 @@ body::after {
 .timetable-card button:hover {
     filter: brightness(1.1);
 }
+
 /* Animation Keyframes */
 @keyframes fadeSlideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Apply animation to each card */
-.timetable-card {
-    animation: fadeSlideIn 0.5s ease forwards;
-    opacity: 0; /* start invisible, fadeSlideIn sets opacity to 1 */
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
