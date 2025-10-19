@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile | University Timetable Manager</title>
-    <link rel="stylesheet" href="profile.css" />
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
+    <link rel="stylesheet" href="profile.css" />
 </head>
 <body>
+
 <header>
     <nav class="navbar">
         <a href="../HomePage/index.html" class="logo">Timetable Manager</a>
@@ -20,14 +21,16 @@
 </header>
 
 <main>
+    <!-- Greeting Banner -->
     <section class="profile-info">
-        <h1>Welcome, <span id="username">Student</span></h1>
+        <h1>Welcome, <span id="username">Student</span> 👋</h1>
         <p>Your saved timetables:</p>
     </section>
 
+    <!-- Timetable Cards Grid -->
     <section class="timetable-list">
         <div id="timetableContainer">
-            <!-- Timetable cards will be dynamically generated -->
+            <!-- Timetable cards will be dynamically generated here -->
         </div>
     </section>
 </main>
@@ -35,3 +38,4 @@
 <script src="profile.js"></script>
 </body>
 </html>
+

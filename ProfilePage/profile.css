@@ -1,13 +1,11 @@
-/* General Styles */
+/* Body & Background */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
 }
 
-/* Background Decorations */
 body::before {
     content: "";
     position: fixed;
@@ -44,7 +42,6 @@ body::after {
     color: white;
     text-decoration: none;
     margin-left: 15px;
-    font-weight: 500;
 }
 
 .navbar a.logout {
@@ -70,16 +67,15 @@ body::after {
     opacity: 0.9;
 }
 
-/* Timetable Card Grid */
+/* Timetable Cards Grid */
 .timetable-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 20px;
 }
 
-/* Timetable Cards */
 .timetable-card {
     background-color: white;
     border-radius: 12px;
@@ -107,9 +103,9 @@ body::after {
     font-weight: 600;
 }
 
-/* Buttons inside cards */
+/* Card Buttons */
 .timetable-card button {
-    margin: 8px 0;
+    margin: 5px 0;
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
@@ -120,36 +116,29 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    transition: filter 0.2s ease;
-    font-size: 0.95rem;
 }
 
-/* Button Colors */
 .timetable-card .edit-btn { background-color: #0077b6; color: white; }
 .timetable-card .delete-btn { background-color: #d62828; color: white; }
 .timetable-card .export-btn { background-color: #4cc9f0; color: white; }
 
-/* Hover Effects for Buttons */
 .timetable-card button:hover {
     filter: brightness(1.1);
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .timetable-list {
-        gap: 15px;
-        padding: 20px 10px;
+/* Animation Keyframes */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    .timetable-card {
-        width: 90%;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    .profile-info h1 {
-        font-size: 1.7rem;
-    }
-
-    .profile-info p {
-        font-size: 1rem;
-    }
+/* Apply animation to each card */
+.timetable-card {
+    animation: fadeSlideIn 0.5s ease forwards;
+    opacity: 0; /* start invisible, fadeSlideIn sets opacity to 1 */
 }
