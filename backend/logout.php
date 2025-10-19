@@ -1,7 +1,6 @@
 <?php
 session_start();
-session_unset();
+$_SESSION = [];
 session_destroy();
-header("Location: ../Auth/signin.html");
-exit;
-?>
+header("Location: ../StarterPage/login.php");
+exit();

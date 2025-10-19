@@ -1,19 +1,18 @@
 <?php
 $host = 'localhost';
 $db = 'timetable_manager';
-$user = 'root'; // replace with your DB username
-$pass = '';     // replace with your DB password
-$charset = 'utf8mb4';
+$user = 'root'; // your DB username
+$pass = '';     // your DB password
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-];
+// Create connection
+$conn = new mysqli($host, $user, $pass, $db, 3307);
 
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+// Optional: set charset to utf8mb4
+$conn->set_charset("utf8mb4");
 ?>
+

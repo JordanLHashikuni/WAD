@@ -1,27 +1,32 @@
-// SIGNUP PAGE SCRIPT
+// signup.js
+
+// Optional: show server-side error messages
+window.addEventListener('DOMContentLoaded', () => {
+    const error = sessionStorage.getItem('signupError');
+    if (error) {
+        alert(error);
+        sessionStorage.removeItem('signupError');
+    }
+});
 
 document.getElementById("signupForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const fullname = document.getElementById("fullname").value.trim();
+    // Remove e.preventDefault() so form submits to PHP
+    const fullname = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-    // Basic validation
     if (!fullname || !email || !password || !confirmPassword) {
+        e.preventDefault(); // Stop submission if fields are empty
         alert("Please fill in all fields.");
         return;
     }
 
     if (password !== confirmPassword) {
+        e.preventDefault();
         alert("Passwords do not match.");
         return;
     }
 
-    // TODO: Add backend API call to register user
-    console.log("Registering:", fullname, email);
-
-    // Example redirect after successful registration
-    window.location.href = "login.html";
+    // Otherwise, let the form submit to register.php
 });
